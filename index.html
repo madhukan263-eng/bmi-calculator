@@ -3,135 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google AdSense Account -->
+  <meta name="google-adsense-account" content="ca-pub-8365004292440012">
+
   <title>BMI Calculator</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background: url('https://images.unsplash.com/photo-1554284126-7d89e07b1e9b?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .calculator {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 15px;
+      font-family: Arial, sans-serif;
       text-align: center;
-      width: 320px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      padding: 50px;
+      background: #f0f0f0;
     }
-    h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
-    input[type="number"] {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    button {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 10px;
-      background: #FF5722;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #E64A19;
-    }
-    .result {
+    h1 { color: #333; }
+    input { padding: 10px; margin: 10px; width: 150px; }
+    button { padding: 10px 20px; cursor: pointer; }
+    .result { margin-top: 20px; font-size: 18px; color: #444; }
+    .adsense-container { margin-top: 30px; }
+    .clickbank-btn {
+      display: inline-block;
       margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-    }
-    .tip {
-      font-size: 14px;
-      color: #555;
-      margin-top: 5px;
-    }
-    .cta {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #FF5722;
-      font-weight: bold;
-    }
-    .cb-button {
-      display: none; /* Initially hidden */
-      margin-top: 15px;
-      padding: 12px 20px;
-      background: #4CAF50;
-      color: white;
-      font-weight: bold;
+      padding: 10px 20px;
+      background: #28a745;
+      color: #fff;
       text-decoration: none;
-      border-radius: 10px;
-    }
-    .cb-button:hover {
-      background: #45a049;
+      border-radius: 5px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="calculator">
-    <h2>BMI Calculator</h2>
-    <input type="number" id="weight" placeholder="Weight (kg)" required>
-    <input type="number" id="height" placeholder="Height (cm)" required>
-    <br>
-    <button onclick="calculateBMI()">Check Your BMI</button>
-    <div class="result" id="result"></div>
-    <div class="tip" id="tip"></div>
-    <div class="cta">Click the button above & know your health instantly!</div>
-    <a href="https://ed8599n3itb-8vb6ma6bo68w3o.hop.clickbank.net" target="_blank" class="cb-button" id="cbButton">
-      Try This Fat Burning Solution
-    </a>
+  <h1>BMI Calculator</h1>
+  <input type="number" id="weight" placeholder="Weight (kg)">
+  <input type="number" id="height" placeholder="Height (cm)">
+  <br>
+  <button onclick="calculateBMI()">Calculate BMI</button>
+  
+  <div class="result" id="result"></div>
+
+  <!-- ClickBank Button -->
+  <a class="clickbank-btn" href="https://ed8599n3itb-8vb6ma6bo68w3o.hop.clickbank.net" target="_blank">
+    Buy Recommended Product
+  </a>
+
+  <!-- AdSense Placeholder -->
+  <div class="adsense-container">
+    <!-- Google AdSense code will go here after approval -->
   </div>
 
   <script>
     function calculateBMI() {
-      let weight = document.getElementById('weight').value;
-      let height = document.getElementById('height').value;
-
-      if(weight === "" || height === "") {
-        alert("Please enter both weight and height");
-        return;
-      }
-
-      height = height / 100; // convert cm to meters
-      let bmi = weight / (height * height);
-      bmi = bmi.toFixed(1);
-
-      let category = "";
-      let tip = "";
-
-      if(bmi < 18.5) {
-        category = "Underweight";
-        tip = "Eat more nutritious food & maintain a healthy diet.";
-      } else if(bmi >= 18.5 && bmi < 24.9) {
-        category = "Normal";
-        tip = "Great! Keep maintaining your healthy lifestyle.";
-      } else if(bmi >= 25 && bmi < 29.9) {
-        category = "Overweight";
-        tip = "Exercise regularly & watch your diet.";
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value) / 100;
+      if (weight > 0 && height > 0) {
+        const bmi = (weight / (height * height)).toFixed(2);
+        let category = '';
+        let tip = '';
+        if (bmi < 18.5) {
+          category = 'Underweight';
+          tip = 'Try to gain weight with healthy diet.';
+        } else if (bmi < 24.9) {
+          category = 'Normal';
+          tip = 'Maintain your healthy lifestyle!';
+        } else if (bmi < 29.9) {
+          category = 'Overweight';
+          tip = 'Try to exercise regularly and control diet.';
+        } else {
+          category = 'Obese';
+          tip = 'Consult a doctor and follow a strict health plan.';
+        }
+        document.getElementById('result').innerHTML = 
+          `Your BMI: ${bmi} <br> Category: ${category} <br> Tip: ${tip}`;
       } else {
-        category = "Obese";
-        tip = "Consult a doctor & follow a healthy weight loss plan.";
+        alert('Please enter valid weight and height.');
       }
-
-      document.getElementById('result').innerHTML = `Your BMI: ${bmi} (${category})`;
-      document.getElementById('tip').innerHTML = tip;
-
-      // Show ClickBank button after calculation
-      document.getElementById('cbButton').style.display = "inline-block";
     }
   </script>
 </body>
 </html>
+
 
