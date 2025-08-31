@@ -3,29 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-8365004292440012">
-  <title>Weight Loss Solution</title>
-  <meta name="description" content="Discover the ultimate weight loss solution for a healthier lifestyle. Try now and see the results!">
-  <meta name="keywords" content="weight loss, fat burn, slim body, healthy lifestyle">
+  <title>BMI Calculator - Slim Reset</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 15px;
+      font-size: 24px;
+    }
+    .container {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 12px 20px;
+      background: #0077cc;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .ads {
+      margin: 20px 0;
+    }
+    .affiliate {
+      margin-top: 20px;
+      background: #fffae6;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ffe58f;
+    }
+    .affiliate button {
+      background: #ff5722;
+    }
+    .affiliate button:hover {
+      background: #e64a19;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center;">
+<body>
+  <header>Free BMI Calculator</header>
 
-  <header style="background: #ff6f61; color: white; padding: 20px;">
-    <h1>Welcome to Slim Reset</h1>
-    <p>Your journey to a healthier life starts here</p>
-  </header>
+  <div class="container">
+    <h2>Check Your BMI</h2>
+    <input type="number" id="weight" placeholder="Enter weight (kg)">
+    <input type="number" id="height" placeholder="Enter height (cm)">
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div id="result"></div>
+  </div>
 
-  <main style="padding: 20px;">
-    <h2>🔥 Best Weight Loss Solution</h2>
-    <p>Transform your body and boost your energy with our natural fat-burning solution. Safe, effective, and trusted worldwide!</p>
-    <a href="https://ed8599n3itb-8vb6ma6bo68w3o.hop.clickbank.net" target="_blank" style="display: inline-block; background: #28a745; color: white; padding: 15px 25px; text-decoration: none; font-size: 18px; border-radius: 5px; margin-top: 20px;">
-      ✅ Try Now
+  <!-- Google AdSense Placeholder -->
+  <div class="ads">
+    <p>Ad Space (Google AdSense will appear here)</p>
+    <!-- Replace this with your AdSense code -->
+    <!-- Example:
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXX"
+     crossorigin="anonymous"></script>
+    -->
+  </div>
+
+  <!-- Affiliate Promotion Section -->
+  <div class="affiliate">
+    <h3>Want to Burn Fat Faster?</h3>
+    <p>Discover a proven natural solution for weight loss and energy boost.</p>
+    <a href="https://2b149bh2lge4apdjoc74s-6w9d.hop.clickbank.net" target="_blank">
+      <button>🔥 Learn More & Get Started</button>
     </a>
-  </main>
+  </div>
 
-  <footer style="background: #333; color: white; padding: 10px;">
-    <p>&copy; 2025 Slim Reset USA | All Rights Reserved</p>
-  </footer>
+  <script>
+    function calculateBMI() {
+      const weight = document.getElementById('weight').value;
+      const height = document.getElementById('height').value / 100; // convert cm to meters
+      if (weight && height) {
+        const bmi = (weight / (height * height)).toFixed(2);
+        let status = '';
+        if (bmi < 18.5) status = 'Underweight';
+        else if (bmi >= 18.5 && bmi < 24.9) status = 'Normal weight';
+        else if (bmi >= 25 && bmi < 29.9) status = 'Overweight';
+        else status = 'Obese';
+
+        document.getElementById('result').innerHTML =
+          `Your BMI is <strong>${bmi}</strong> (${status})`;
+      } else {
+        document.getElementById('result').innerHTML = 'Please enter valid values!';
+      }
+    }
+  </script>
 
 </body>
 </html>
