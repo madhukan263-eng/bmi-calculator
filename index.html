@@ -3,84 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXX" />
-
-  <!-- Google AdSense Account -->
   <meta name="google-adsense-account" content="ca-pub-8365004292440012">
-
-  <title>BMI Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-      background: #f0f0f0;
-    }
-    h1 { color: #333; }
-    input { padding: 10px; margin: 10px; width: 150px; }
-    button { padding: 10px 20px; cursor: pointer; }
-    .result { margin-top: 20px; font-size: 18px; color: #444; }
-    .adsense-container { margin-top: 30px; }
-    .clickbank-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #28a745;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-  </style>
+  <title>Weight Loss Solution</title>
+  <meta name="description" content="Discover the ultimate weight loss solution for a healthier lifestyle. Try now and see the results!">
+  <meta name="keywords" content="weight loss, fat burn, slim body, healthy lifestyle">
 </head>
-<body>
-  <h1>BMI Calculator</h1>
-  <input type="number" id="weight" placeholder="Weight (kg)">
-  <input type="number" id="height" placeholder="Height (cm)">
-  <br>
-  <button onclick="calculateBMI()">Calculate BMI</button>
-  
-  <div class="result" id="result"></div>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; text-align: center;">
 
-  <!-- ClickBank Button -->
-  <a class="clickbank-btn" href="https://ed8599n3itb-8vb6ma6bo68w3o.hop.clickbank.net" target="_blank">
-    Buy Recommended Product
-  </a>
+  <header style="background: #ff6f61; color: white; padding: 20px;">
+    <h1>Welcome to Slim Reset</h1>
+    <p>Your journey to a healthier life starts here</p>
+  </header>
 
-  <!-- AdSense Placeholder -->
-  <div class="adsense-container">
-    <!-- Google AdSense code will go here after approval -->
-  </div>
+  <main style="padding: 20px;">
+    <h2>🔥 Best Weight Loss Solution</h2>
+    <p>Transform your body and boost your energy with our natural fat-burning solution. Safe, effective, and trusted worldwide!</p>
+    <a href="https://ed8599n3itb-8vb6ma6bo68w3o.hop.clickbank.net" target="_blank" style="display: inline-block; background: #28a745; color: white; padding: 15px 25px; text-decoration: none; font-size: 18px; border-radius: 5px; margin-top: 20px;">
+      ✅ Try Now
+    </a>
+  </main>
 
-  <script>
-    function calculateBMI() {
-      const weight = parseFloat(document.getElementById('weight').value);
-      const height = parseFloat(document.getElementById('height').value) / 100;
-      if (weight > 0 && height > 0) {
-        const bmi = (weight / (height * height)).toFixed(2);
-        let category = '';
-        let tip = '';
-        if (bmi < 18.5) {
-          category = 'Underweight';
-          tip = 'Try to gain weight with healthy diet.';
-        } else if (bmi < 24.9) {
-          category = 'Normal';
-          tip = 'Maintain your healthy lifestyle!';
-        } else if (bmi < 29.9) {
-          category = 'Overweight';
-          tip = 'Try to exercise regularly and control diet.';
-        } else {
-          category = 'Obese';
-          tip = 'Consult a doctor and follow a strict health plan.';
-        }
-        document.getElementById('result').innerHTML = 
-          `Your BMI: ${bmi} <br> Category: ${category} <br> Tip: ${tip}`;
-      } else {
-        alert('Please enter valid weight and height.');
-      }
-    }
-  </script>
+  <footer style="background: #333; color: white; padding: 10px;">
+    <p>&copy; 2025 Slim Reset USA | All Rights Reserved</p>
+  </footer>
+
 </body>
 </html>
