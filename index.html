@@ -1,37 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BMI Calculator — Slim Reset</title>
 
-  <!-- Google AdSense Meta Tag -->
+  <!-- Your AdSense meta tag for verification -->
   <meta name="google-adsense-account" content="ca-pub-8365004292440012">
 
-  <title>About Us</title>
+  <meta name="description" content="Free BMI Calculator — enter weight & height, see your BMI, category and get tips.">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-      padding: 20px;
-      text-align: center;
-    }
-    a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 15px;
-      background: #007BFF;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    a:hover {
-      background: #0056b3;
-    }
+    :root{--brand:#0077cc;--accent:#ff5722}
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f4f6fb;color:#222}
+    header{background:var(--brand);color:#fff;padding:18px 12px;text-align:center}
+    nav{display:flex;justify-content:center;gap:12px;padding:8px;background:#0e6bb0}
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    .wrap{max-width:720px;margin:26px auto;padding:18px}
+    .card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 8px 24px rgba(0,0,0,0.06)}
+    h1,h2{margin:8px 0}
+    .inputs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+    input[type=number]{width:160px;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:16px}
+    .btn{display:inline-block;background:var(--brand);color:#fff;padding:12px 18px;border-radius:10px;border:none;cursor:pointer;font-weight:700;margin-top:12px}
+    .btn:hover{opacity:.95}
+    #result{margin-top:16px;font-size:18px;font-weight:700}
+    .tip{margin-top:8px;color:#555}
+    .affiliate{margin-top:18px;padding:14px;border-radius:10px;background:#fff6f0;border:1px solid #ffd9c6;text-align:center}
+    .hoplink{display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+    footer{margin-top:24px;padding:14px;text-align:center;color:#666;font-size:14px}
+    @media(max-width:520px){ input[type=number]{width:100%} .wrap{margin:12px;padding:12px}}
   </style>
 </head>
 <body>
-  <h1>About Us</h1>
-  <p>This is the About page of your website.</p>
-  <a href="index.html">Back to Home</a>
+
+  <header>
+    <h1>Slim Reset — Free BMI Calculator</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main class="wrap">
+    <div class="card">
+      <h2>Check your Body Mass Index (BMI)</h2>
+      <p>Enter your weight and height to get an instant BMI, category and a short tip.</p>
+
+      <div class="inputs">
+        <input type="number" id="weight" placeholder="Weight (kg)" min="1" />
+        <input type="number" id="height" placeholder="Height (cm)" min="30" />
+      </div>
+
+      <button class="btn" id="calcBtn">Calculate BMI</button>
+
+      <div id="result" aria-live="polite"></div>
+      <div class="tip" id="tip"></div>
+
+      <!-- Affiliate area: initially hidden -->
+      <div class="affiliate" id="affiliate" style="display:none;">
+        <p><strong>Want faster results?</strong> Try a proven weight-loss solution.</p>
+        <!-- Replace the href below if you ever change hoplink -->
+        <a id="hoplink" class="hoplink" href="https://2b149bh2lge4apdjoc74s-6w9d.hop.clickbank.net" target="_blank" rel="noopener noreferrer">
+          🔥 Get Slim Now
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Slim Reset — <a href="privacy.html">Privacy</a> • <a href="about.html">About</a>
+  </footer>
+
+  <script>
+    // Show affiliate only after a successful calculation
+    document.getElementById('calcBtn').addEventListener('click', function(){
+      const w = parseFloat(document.getElementById('weight').value);
+      const hcm = parseFloat(document.getElementById('height').value);
+      const resultEl = document.getElementById('result');
+      const tipEl = document.getElementById('tip');
+      const affiliateEl = document.getElementById('affiliate');
+
+      // basic validation
+      if (!w || !hcm || w <= 0 || hcm <= 0) {
+        resultEl.innerHTML = '⚠️ Please enter valid weight and height.';
+        tipEl.innerHTML = '';
+        affiliateEl.style.display = 'none';
+        return;
+      }
+
+      const h = hcm/100;
+      const bmi = +(w / (h*h));
+      const bmiRounded = bmi.toFixed(2);
+      let cat = '', tip = '';
+
+      if (bmi < 18.5){ cat = 'Underweight'; tip = 'Eat more nutritious food & consult a diet plan.'; }
+      else if (bmi >= 18.5 && bmi < 24.9){ cat = 'Normal'; tip = 'Maintain balanced diet & regular activity.'; }
+      else if (bmi >= 25 && bmi < 29.9){ cat = 'Overweight'; tip = 'Increase exercise, reduce processed foods.'; }
+      else { cat = 'Obese'; tip = 'Consult a healthcare professional.'; }
+
+      resultEl.innerHTML = `Your BMI: <strong>${bmiRounded}</strong> — ${cat}`;
+      tipEl.innerHTML = tip;
+
+      // show the affiliate block (button) after calculation
+      affiliateEl.style.display = 'block';
+
+      // Optional: scroll to affiliate button for better visibility
+      setTimeout(() => {
+        document.getElementById('hoplink').scrollIntoView({behavior:'smooth', block:'center'});
+      }, 150);
+    });
+  </script>
 </body>
 </html>
