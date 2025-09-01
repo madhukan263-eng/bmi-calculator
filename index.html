@@ -3,121 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMI Calculator - Slim Reset</title>
 
-  <!-- ✅ Google AdSense Verification Meta Tag -->
-  <meta name="google-adsense-account" content="ca-pub-1234567890123456"> 
+  <!-- Google AdSense Meta Tag -->
+  <meta name="google-adsense-account" content="ca-pub-8365004292440012">
 
+  <title>About Us</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
+      background: #f8f8f8;
+      padding: 20px;
       text-align: center;
     }
-    header {
-      background: #0077b6;
-      color: white;
-      padding: 15px;
-      font-size: 22px;
-    }
-    .container {
-      margin: 30px auto;
-      padding: 20px;
-      max-width: 400px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-    }
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    button {
-      background: #0077b6;
-      color: white;
-      border: none;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: #005f87;
-    }
-    .result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .affiliate {
-      margin-top: 25px;
-      padding: 15px;
-      background: #fffae6;
-      border: 1px solid #f5d742;
-      border-radius: 10px;
-    }
-    .affiliate a {
+    a {
       display: inline-block;
-      margin-top: 10px;
-      background: #ff7b00;
-      color: white;
-      padding: 10px 18px;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background: #007BFF;
+      color: #fff;
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
+      border-radius: 5px;
     }
-    .affiliate a:hover {
-      background: #cc6500;
+    a:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
-
-  <header>✅ BMI Calculator - Slim Reset USA</header>
-
-  <div class="container">
-    <h2>Check Your BMI</h2>
-    <p>Enter your details below:</p>
-    <input type="number" id="weight" placeholder="Weight (kg)">
-    <input type="number" id="height" placeholder="Height (cm)">
-    <button onclick="calculateBMI()">Calculate BMI</button>
-    <div class="result" id="result"></div>
-  </div>
-
-  <div class="affiliate">
-    <h3>🔥 Want to Burn Fat Faster?</h3>
-    <p>Discover the #1 weight loss solution trusted in the USA!</p>
-    <a href="https://2b149bh2lge4apdjoc74s-6w9d.hop.clickbank.net" target="_blank">👉 Get Your Fat-Burning Juice</a>
-  </div>
-
-  <script>
-    function calculateBMI() {
-      let weight = document.getElementById("weight").value;
-      let height = document.getElementById("height").value;
-
-      if (weight > 0 && height > 0) {
-        let bmi = weight / ((height / 100) * (height / 100));
-        let result = "Your BMI is " + bmi.toFixed(2) + " - ";
-
-        if (bmi < 18.5) result += "Underweight 😟";
-        else if (bmi < 24.9) result += "Normal Weight 😊";
-        else if (bmi < 29.9) result += "Overweight 😐";
-        else result += "Obese 😟";
-
-        document.getElementById("result").innerHTML = result;
-      } else {
-        document.getElementById("result").innerHTML = "⚠️ Please enter valid weight and height!";
-      }
-    }
-  </script>
-
+  <h1>About Us</h1>
+  <p>This is the About page of your website.</p>
+  <a href="index.html">Back to Home</a>
 </body>
 </html>
